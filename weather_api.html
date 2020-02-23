@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <title> Weather API </title>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <h1> Open Weather Map</h1>
+    <div>
+    <div id="details">
+        Enter a city around the world:</div><br>
+        <input type="text" name="city" id="thecity">
+        <button type="button" id="btn1" onclick="loadData()"> Get Weather!</button>
+    </div>
+<br>
+    <div id="demo"> </div>
+
+    <script>
+        function loadData() {
+
+            var cityvalue = document.getElementById('thecity').value;
+
+            htmldata = "http://api.openweathermap.org/data/2.5/weather?q=" + cityvalue + "&mode=html&APPID=6067127e35c754e2c9fc6e797ee2f3c6";
+
+            //Send Ajax request using a built in XMLHttpRequest object. 
+            var xhttp = new XMLHttpRequest();
+            //The onreadystatechange property specifies a function to be executed every time the status of the XMLHttpRequest object changes
+
+            xhttp.onreadystatechange = function() {
+                //The readyState property holds the status of the XMLHttpRequest.
+                //When readyState property is 4 and the status property is 200, the response is ready:
+
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    //The responseText property returns the server response as a text string.
+                    var data1 = xhttp.responseText;
+                    document.getElementById("demo").innerHTML = data1;
+                }
+            };
+
+            //False: Synchronous Transmission, the sender and receiver should have synchronized clocks before data transmission. 
+            //True: Whereas Asynchronous Transmission does not require a clock but it adds a parity bit to the data before transmission.
+
+            xhttp.open("GET", htmldata, true);
+            //send() 	Sends the request to the server (used for GET)
+            //send(string) 	Sends the request to the server (used for POST)
+            xhttp.send();
+
+        }
+
+    </script>
+</body>
+
+</html>
