@@ -6,15 +6,16 @@
 </head>
 
 <body>
-
     <h1> Open Weather Map</h1>
     <div>
-    <div id="details">
-        Enter a city around the world:</div><br>
-        <input type="text" name="city" id="thecity">
-        <button type="button" id="btn1" onclick="loadData()"> Get Weather!</button>
+        <div id="details">
+            Enter the name of a city to view the current weather</div><br>
+        <div id="search">
+            <input type="text" name="city" id="thecity">
+            <button type="button" id="btn1" onclick="loadData()"> Get Weather!</button>
+        </div>
     </div>
-<br>
+    <br>
     <div id="demo"> </div>
 
     <script>
@@ -48,8 +49,5 @@
             xhttp.send();
 
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
